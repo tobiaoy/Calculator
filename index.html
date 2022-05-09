@@ -5,12 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator JS</title>
+    <link rel = 'stylesheet' href = 'style.css'>
+    <script type = 'text/javascript' defer src = 'app.js'></script>
 </head>
 <body>
     <div id = title></div>
     <div id = calculator-grid>
-        <div id = display></div>
-        <div id = button-grid></div>
+        <div id = display>
+            <div id = upper-view></div>
+            <p></p>
+            <div id = main-view></div>
+        </div>
+        <div id = button-grid>
+            <button id = C class = viewButton>C</button>
+            <button id = AC class = viewButton>AC</button>
+            <button id = ^ class = opButton>^</button>
+            <button id = ÷ class = opButton>÷</button>
+            <button id = 7 class = numButton>7</button>
+            <button id = 8 class = numButton>8</button>
+            <button id = 9 class = numButton>9</button>
+            <button id = x class = opButton>x</button>
+            <button id = 4 class = numButton>4</button>
+            <button id = 5 class = numButton>5</button>
+            <button id = 6 class = numButton>6</button>
+            <button id = - class = opButton>-</button>
+            <button id = 1 class = numButton>1</button>
+            <button id = 2 class = numButton>2</button>
+            <button id = 3 class = numButton>3</button>
+            <button id = + class = opButton>+</button>
+            <button id = . class = numButton>.</button>
+            <button id = 0 class = numButton>0</button>
+            <button id = equals class = opButton>=</button>
+        </div>
     </div>
     <div id = footer></div>
 </body>
