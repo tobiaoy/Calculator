@@ -46,6 +46,10 @@
     background-color: var(--screen-color);
     text-align: right;
     font-family: var(--roboto);
+    border-style: solid;
+    border-width: thin;
+    word-wrap: break-word;
+    word-break: break-all;
 }
 
 #prev-scr{
