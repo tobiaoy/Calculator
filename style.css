@@ -27,6 +27,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 50px;
+    background-color: var(--lightest-blue);
 }
 
 #calculator{
@@ -93,3 +94,25 @@ button:hover{
     background-color: var(--dark-purple);
     color: white;
 }
+
+#backspace-btn{
+    background-color: #FAD36E;
+}
+
+#clear-btn{
+    background-color: #EDB4A2;
+}
+
+.op-btn{
+    background-color: #273248;
+    color: white;
+}
+
+.equals-btn{
+    background-color: #6b8;
+}
+
+.activeOp{
+    background-color: var(--dark-purple);
+}
+
