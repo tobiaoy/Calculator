@@ -9,9 +9,12 @@ const dotButton = document.querySelector('.dot-btn');
 const switchButton = document.querySelector('.switch-btn');
 
 //global variables
-let currentNum;
-let previousNum;
+let currentNum = '';
+let previousNum = '';
 let currentOp;
+
+//to make the current operator visible ..test
+
 
 //operations
 function add (num1, num2){
@@ -44,25 +47,30 @@ function operate(num1, num2, op){
             result = multiply(num1, num2);
             break;
         case '/':
-            result = subtract(num1, num2);
+            result = divide(num1, num2);
             break;
         default:
             return;
     }
-
+    opButtons.forEach(btn => {
+        btn.classList.remove('activeOp')
+    });
     return result;
 }
 
 //function to change the sign of the number
-    function changeSign(){
-        if (currentNum === null || currentNum === '' || currentNum == 0){
-            return;
-        } else {
-            (parseFloat(currentNum) * -1).toString;
+function changeSign(){
+	tempNum = currentScreen.innerHTML
+	
+	if (tempNum === '' || tempNum == 0 || tempNum === null){
+		return;
+		} else {
+			tempNum = parseFloat(tempNum * -1).toString();
+			currentNum = tempNum;
+			
+			updateDisplay();
         }
-        
-        updateDisplay();
-    }
+}
 
 //function to incorporate the addition of a dot
 function addDot(){
@@ -121,9 +129,10 @@ function clearEntry(){
     //function should take whatever is in the current display and move it to the previous display
     //functions should react to an operation or an equals call
     function switchScreen(){
+        if((currentNum !== null || currentNum !== '') && (previousNum === null || previousNum === '')){
         previousNum = currentNum;
         currentNum = '';
-        
+        }
         updateDisplay();
     }
 
@@ -158,13 +167,16 @@ function clearEntry(){
         }
         
         //condition to check if there is no number at all
-        if (previousNum === null || currentNum === null){
+        if (previousNum === null && currentNum === null){
             return;
         }
+
+        //condition if first number but no second number
+        if (previousNum !== null )
         
         //condition to operate if all operands are available
-        if(previousNum !== null && currentNum !== null && currentOp !== null){
-            tempResult = operate(previousNum, currentNum, currentOp)
+        if((previousNum !== null && previousNum !== '') && (currentNum !== null && currentNum !== '') && (currentOp !== null && currentOp !== '')){
+            tempResult = operate(previousNum, currentNum, currentOp);
             previousNum = tempResult;
             currentOp = e.target.id;
             currentNum = '';
@@ -176,26 +188,36 @@ function clearEntry(){
     //add event listeners to the buttons and incorporate the necessary logic through the updaters
     function updateManager(){
         numButtons.forEach(btn => {
-            btn.addEventListener('click', inputNum(e));
+            btn.addEventListener('click', inputNum);
         });
 
         opButtons.forEach(btn => {
-            btn.addEventListener('click', inputOp(e));
-            btn.addEventListener('click', switchScreen())
+            btn.addEventListener('click', function (e) {
+                switchScreen();
+                inputOp(e);
+                btn.classList.add('activeOp');
+            });
+            
         })
 
+
         viewButtons.forEach(btn => {
-            btn.addEventListener('click', function(){
+            btn.addEventListener('click', function(e){
                 if (e.target.id === 'clear-btn'){
                     clearDisplay();
-                } else if (e.target.id === 'backspace=btn'){
+                } else if (e.target.id === 'backspace-btn'){
                     clearEntry();
                 }
             })
         })
 
-        equalsButton.addEventListener('click', calculate());
-        dotButton.addEventListener('click', addDot());
-        switchButton.addEventListener('click', changeSign());
+        equalsButton.addEventListener('click', function (){
+            calculate();
+            updateDisplay();
+        });
+        dotButton.addEventListener('click', addDot);
+        switchButton.addEventListener('click', changeSign);
 
     }
+
+    updateManager();
