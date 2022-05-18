@@ -221,3 +221,13 @@ function clearEntry(){
     }
 
     updateManager();
+
+    //keyboard functionality?
+    window.addEventListener('keydown', function(e){
+        const key = document.querySelector(`button[data-key='${e.keyCode}']`);
+        if (key !== undefined && key !== null){
+        key.click();
+        } else {
+            return;
+        }
+    });
