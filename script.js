@@ -13,7 +13,12 @@ let currentNum = '';
 let previousNum = '';
 let currentOp;
 
-//to make the current operator visible ..test
+//rounding function
+function roundToStd(x){
+	x = x * 10000;
+	let x_rounded = Math.round(x);
+	return x_rounded / 10000;
+}
 
 
 //operations
@@ -55,7 +60,7 @@ function operate(num1, num2, op){
     opButtons.forEach(btn => {
         btn.classList.remove('activeOp')
     });
-    return result;
+    return roundToStd(result);
 }
 
 //function to change the sign of the number
@@ -106,6 +111,10 @@ function clearDisplay(){
 	currentNum = '';
 	previousNum = '';
 	currentOp = '';
+
+    opButtons.forEach(btn => {
+        btn.classList.remove('activeOp')
+    });
 	
 	updateDisplay();
 }
@@ -113,6 +122,10 @@ function clearDisplay(){
 //function to clear current entry
 function clearEntry(){
 	currentNum = '';
+
+    opButtons.forEach(btn => {
+        btn.classList.remove('activeOp')
+    });
 	
 	updateDisplay();
 }
@@ -133,6 +146,7 @@ function clearEntry(){
         previousNum = currentNum;
         currentNum = '';
         }
+        
         updateDisplay();
     }
 
