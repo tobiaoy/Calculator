@@ -96,7 +96,7 @@ function calculate(){
 		return;
 	} else if (currentNum === '' && previousNum !== null){
 		currentNum = previousNum;
-	} else if (currentNum !== null && previousNum === null){
+	} else if (currentNum !== null && (previousNum === null || previousNum === '')){
 		return currentNum;
 	} else if (currentNum !== null && currentOp !== null && previousNum !== null){
 		let tempResult = operate(previousNum, currentNum, currentOp)
