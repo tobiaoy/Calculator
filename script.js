@@ -80,7 +80,6 @@ function changeSign(){
 //function to incorporate the addition of a dot
 function addDot(){
 	tempNum = currentScreen.innerHTML;
-	
 	if (tempNum.includes('.')){
 		return;
 	} else if (tempNum === '' || tempNum === null){
@@ -88,6 +87,7 @@ function addDot(){
 	} else {
 		currentNum += '.';	
 	} 
+    updateDisplay();
 }
 
 //function for equals to button
